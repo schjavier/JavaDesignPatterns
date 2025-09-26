@@ -1,3 +1,4 @@
+import Prototype.ExecutePrototypeExample;
 import Proxy.ExecuteProxyExample;
 import Visitor.*;
 import Decorator.ExecuteDecoratorExample;
@@ -17,6 +18,7 @@ public class Main {
             System.out.println("1 - Ejecutar Patron Proxy");
             System.out.println("2 - Ejecutar Patron Visitor");
             System.out.println("3 - Ejecutar Patron Decorator");
+            System.out.println("4 - Ejecutar Patron Prototype");
             System.out.println("0 - Salir");
             option = Integer.parseInt(teclado.nextLine());
 
@@ -24,6 +26,7 @@ public class Main {
                 case 1 -> new ExecuteProxyExample();
                 case 2 -> new ExecuteVisitorExample();
                 case 3 -> new ExecuteDecoratorExample();
+                case 4 -> new ExecutePrototypeExample();
             }
 
         } while (option != 0);
