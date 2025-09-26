@@ -1,36 +1,64 @@
-import Prototype.ExecutePrototypeExample;
-import Proxy.ExecuteProxyExample;
-import Visitor.*;
-import Decorator.ExecuteDecoratorExample;
+import Examples.Builder.ExecuteBuilderExample;
+import Examples.ChainOC.ExecuteChainOfCommand;
+import Examples.Example;
+import Examples.Mediator.ExecuteMediatorExample;
+import Examples.Prototype.ExecutePrototypeExample;
+import Examples.Proxy.ExecuteProxyExample;
+import Examples.Singleton.ExecuteSingletonExample;
+import Examples.Visitor.*;
+import Examples.Decorator.ExecuteDecoratorExample;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
-        Scanner teclado = new Scanner(System.in);
         int option = 0;
+        boolean go_on = true;
 
+        ArrayList<Example> examples = new ArrayList<Example>(Arrays.asList(
+                new ExecuteDecoratorExample(),
+                new ExecutePrototypeExample(),
+                new ExecuteProxyExample(),
+                new ExecuteVisitorExample(),
+                new ExecuteChainOfCommand(),
+                new ExecuteBuilderExample(),
+                new ExecuteSingletonExample(),
+                new ExecuteMediatorExample()
+        ));
         System.out.println("Bienvenido a los patrones de diseño");
+
 
         do {
             System.out.println("Seleccione una opcion");
-            System.out.println("1 - Ejecutar Patron Proxy");
-            System.out.println("2 - Ejecutar Patron Visitor");
-            System.out.println("3 - Ejecutar Patron Decorator");
-            System.out.println("4 - Ejecutar Patron Prototype");
-            System.out.println("0 - Salir");
-            option = Integer.parseInt(teclado.nextLine());
+            examples.forEach(example -> IO.println(examples.indexOf(example) + "- " + mostrarInicioMensaje() + example.getExampleName()));
+            System.out.println("Otro numero - Salir");
 
-            switch (option) {
-                case 1 -> new ExecuteProxyExample();
-                case 2 -> new ExecuteVisitorExample();
-                case 3 -> new ExecuteDecoratorExample();
-                case 4 -> new ExecutePrototypeExample();
+            try {
+                option = Integer.parseInt(IO.readln());
+            } catch (NumberFormatException e) {
+                System.out.println("Opción no permitida");
             }
 
-        } while (option != 0);
+            if((examples.size()-1) >= option && option >= 0)
+            {
+                Example running = examples.get(option);
+                IO.println("Ejecutando " + running.getExampleName());
+                running.execute();
+            } else {
+                go_on = false;
+            }
 
 
+        } while (go_on);
+
+
+    }
+
+
+    public static String mostrarInicioMensaje()
+    {
+        return " Ejecutar Patron ";
     }
 }
