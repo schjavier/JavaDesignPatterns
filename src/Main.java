@@ -1,3 +1,4 @@
+import FactoryMethod.ExecuteFactoryMethodExample;
 import Prototype.ExecutePrototypeExample;
 import Proxy.ExecuteProxyExample;
 import Visitor.*;
@@ -19,6 +20,7 @@ public class Main {
             System.out.println("2 - Ejecutar Patron Visitor");
             System.out.println("3 - Ejecutar Patron Decorator");
             System.out.println("4 - Ejecutar Patron Prototype");
+            System.out.println("5 - Ejecutar Patron Factory Method");
             System.out.println("0 - Salir");
             option = Integer.parseInt(teclado.nextLine());
 
@@ -27,6 +29,7 @@ public class Main {
                 case 2 -> new ExecuteVisitorExample();
                 case 3 -> new ExecuteDecoratorExample();
                 case 4 -> new ExecutePrototypeExample();
+                case 5 -> new ExecuteFactoryMethodExample();
             }
 
         } while (option != 0);
