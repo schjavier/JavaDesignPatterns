@@ -1,3 +1,4 @@
+import Adapter.ExecuteAdapterExample;
 import FactoryMethod.ExecuteFactoryMethodExample;
 import Flyweight.ExecuteFlyweightExample;
 import Prototype.ExecutePrototypeExample;
@@ -23,6 +24,7 @@ public class Main {
             System.out.println("4 - Ejecutar Patron Prototype");
             System.out.println("5 - Ejecutar Patron Factory Method");
             System.out.println("6 - Ejecutar Patron Flyweight");
+            System.out.println("7 - Ejecutar Patron Adapter");
             System.out.println("0 - Salir");
             option = Integer.parseInt(teclado.nextLine());
 
@@ -33,6 +35,7 @@ public class Main {
                 case 4 -> new ExecutePrototypeExample();
                 case 5 -> new ExecuteFactoryMethodExample();
                 case 6 -> new ExecuteFlyweightExample();
+                case 7 -> new ExecuteAdapterExample();
             }
 
         } while (option != 0);
